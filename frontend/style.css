@@ -28,7 +28,7 @@ html {
   font-style: italic;
 }
 
-#author {
+p, #author {
   font-size: 1rem;
   color: #676767;
   font-weight: 300;
@@ -47,4 +47,11 @@ button {
 
 button:hover {
   background-color: #050404;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px #75758d;
+    font-size: 1rem;
 }

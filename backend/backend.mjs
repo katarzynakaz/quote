@@ -528,13 +528,11 @@ app.post("/", (req, res) => {
     // }
     body.quote = body.quote.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, "");
     body.author = body.author.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, "");
-
-    // 2. Reuse your FE logic (checking body.quote instead of newQuoteText)
+    
     if (!body.quote || !body.author) {
       res.status(400).send("Please add a quote and an author.");
       return;
     } 
-
     if (body.quote.length > 250 || body.author.length > 40) {
       res.status(400).send("Quote must be up to 250 chars and author must be less than 40 chars.");
       return;

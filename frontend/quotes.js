@@ -90,9 +90,6 @@ const addQuote = async () => {
         //clear input 
         addQuoteText.value = "";
         addQuoteAuthor.value = "";
-        //show to user
-        quote.innerHTML = newQuoteText.quote;
-        author.innerHTML = newQuoteAuthor.author;
 } else {
     //take error message frrom response grab from heree 
     //     console.error(`Failed to extract quote and author from post body: ${bodyString}`);

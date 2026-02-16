@@ -491,7 +491,7 @@ function randomQuote() {
 }
 
 app.get("/", (req, res) => {
-  console.log("test");
+  // console.log("test");
   const quote = randomQuote();
   res.json(quote);
 });
@@ -514,6 +514,32 @@ app.post("/", (req, res) => {
       res.status(400).send("Expected body to be a JSON object containing keys quote and author.");
       return;
     }
+    //here add the checks on backedn 400
+    // // from fe
+    // const newQuoteText = addQuoteText.value.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, "");
+    // const newQuoteAuthor = addQuoteAuthor.value.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, ""); 
+    //   if (!newQuoteText|| !newQuoteAuthor) {
+    //     confirmToUser.innerHTML = "Please add a quote and an author.";
+    //     return;
+    // } 
+    // if (newQuoteText.length > 250 || newQuoteAuthor.length > 40) {
+    //     confirmToUser.innerHTML = "Quote must be up to 250 chars and author must be less than 40 chars.";
+    //     return;
+    // }
+    body.quote = body.quote.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, "");
+    body.author = body.author.trim().replace(/[^a-zA-Z0-9,.;:?! ]/g, "");
+
+    // 2. Reuse your FE logic (checking body.quote instead of newQuoteText)
+    if (!body.quote || !body.author) {
+      res.status(400).send("Please add a quote and an author.");
+      return;
+    } 
+
+    if (body.quote.length > 250 || body.author.length > 40) {
+      res.status(400).send("Quote must be up to 250 chars and author must be less than 40 chars.");
+      return;
+    }
+    
     quotes.push({
       quote: body.quote,
       author: body.author,
